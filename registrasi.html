@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrasi - E-Arsip</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <img src="assets/img/logo-zefiz.png" alt="Zefiz Logo" style="width: 64px; height: auto; border-radius: 12px; margin-bottom: 20px;">
+      <h2>Buat Akun Baru</h2>
+      <p>Bergabung dengan E-Arsip sekarang</p>
+      
+      <div class="form-group">
+        <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" />
+      </div>
+      
+      <div class="form-group">
+        <input type="password" id="regPass" name="password" placeholder="Password" autocomplete="new-password" />
+      </div>
+      
+      <div class="form-group">
+        <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" autocomplete="name" />
+      </div>
+      
+      <div class="form-group">
+        <select id="jk">
+          <option value="">Pilih Jenis Kelamin</option>
+          <option value="L">Laki-laki</option>
+          <option value="P">Perempuan</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="sekolah" placeholder="Instansi/Sekolah" />
+      </div>
+
+      <div class="form-group">
+        <select id="role">
+          <option value="">Pilih Role (Akses)</option>
+          <option value="user">Guru / Tendik</option>
+          <option value="admin">Tata Usaha / Admin</option>
+          <option value="kepsek">Kepala Sekolah</option>
+        </select>
+      </div>
+
+      <button class="btn-primary" onclick="register()">Daftar Sekarang</button>
+      
+      <div class="auth-links">
+        <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/registrasi.js"></script>
+  <script>
+    document.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        register();
+      }
+    });
+  </script>
+</body>
+</html>

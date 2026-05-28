@@ -1,0 +1,109 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* BODY CENTER FIX */
+body {
+  background: #f1f5f9;
+  min-height: 100vh;
+  color: #1e293b;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTAINER (KOTAK TENGAH) */
+.container {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+
+  text-align: center;
+
+  animation: fadeIn 0.5s ease;
+}
+
+/* TITLE */
+.container h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* INPUT, SELECT, BUTTON */
+input,
+select,
+button {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+/* FOCUS EFFECT */
+input:focus,
+select:focus {
+  border-color: #117df7;
+  box-shadow: 0 0 0 4px rgba(17, 125, 247, 0.15);
+}
+
+/* BUTTON */
+button {
+  margin-top: 15px;
+  background: linear-gradient(135deg, #011f55, #117df7);
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* BUTTON BACK */
+.back-btn {
+  background: #6b7280;
+}
+
+.back-btn:hover {
+  background: #4b5563;
+}
+
+/* LINK */
+.container a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #117df7;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+/* ANIMASI */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

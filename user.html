@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard User - Arsip Surat</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header" style="justify-content: center; padding: 24px 12px;">
+        <img src="assets/img/logo-zefiz.png" alt="Zefiz Logo" style="width: 80px; height: auto; border-radius: 8px;">
+      </div>
+      <div class="sidebar-menu">
+        <button class="menu-item active" onclick="showSection('dashboard')">
+          <i class="ri-dashboard-line"></i> Dashboard
+        </button>
+        <button class="menu-item" onclick="showSection('ambilNomor')">
+          <i class="ri-file-add-line"></i> Ambil Nomor Surat
+        </button>
+        <button class="menu-item" onclick="showSection('riwayatSurat')">
+          <i class="ri-history-line"></i> Riwayat Surat
+        </button>
+        <button class="menu-item" onclick="showSection('arsipFinal')">
+          <i class="ri-archive-line"></i> Arsip Surat
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="user-info">
+          <h3 id="welcomeText">Selamat Datang</h3>
+          <p><span id="namaUser"></span> • <span id="roleUser"></span> • <span id="sekolahUser"></span></p>
+        </div>
+        <button class="btn-logout" onclick="logout()">
+          <i class="ri-logout-box-line"></i> Logout
+        </button>
+      </header>
+
+      <!-- SECTION: DASHBOARD -->
+      <section id="dashboard" class="section">
+        <div class="section-title">
+          <h2>Dashboard</h2>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Total Surat Diajukan</h3>
+            <div class="value" id="statTotalSurat">0</div>
+          </div>
+          <div class="stat-card" style="background: linear-gradient(135deg, #10b981, #34d399);">
+            <h3>Surat Disetujui</h3>
+            <div class="value" id="statDisetujui">0</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: AMBIL NOMOR SURAT -->
+      <section id="ambilNomor" class="section hidden">
+        <div class="section-title">
+          <h2>Ambil Nomor & Buat Surat</h2>
+        </div>
+        <div class="card">
+          <div class="form-group">
+            <label for="kodeSurat">Jenis Surat</label>
+            <select id="kodeSurat" onchange="generateNomor()"></select>
+          </div>
+          
+          <div class="form-group">
+            <label for="hasil">Kode Surat</label>
+            <input type="text" id="hasil" readonly style="background: #e2e8f0; font-weight: 600;" placeholder="Pilih jenis surat dan tanggal..." />
+          </div>
+
+          <div class="form-group">
+            <label for="judulSurat">Judul Surat</label>
+            <input type="text" id="judulSurat" placeholder="Masukkan judul surat..." />
+          </div>
+
+          <div class="form-group">
+            <label for="tanggal">Tanggal Surat</label>
+            <input type="date" id="tanggal" onchange="generateNomor()" />
+          </div>
+
+          <div class="form-group">
+            <label for="isiSurat">Isi ringkas surat</label>
+            <textarea id="isiSurat" placeholder="Ringkasan isi surat..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Upload Draft Surat</label>
+            <input type="file" id="fileSurat" />
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-secondary" onclick="resetForm()">Reset</button>
+            <button class="btn-secondary" onclick="simpanDraft()">Simpan Draft</button>
+            <button class="btn-primary" onclick="simpanSurat()">
+              <i class="ri-send-plane-fill"></i> Ajukan Surat
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: RIWAYAT SURAT -->
+      <section id="riwayatSurat" class="section hidden">
+        <div class="section-title">
+          <h2>Riwayat & Arsip Surat</h2>
+        </div>
+        <div class="card">
+          <div class="search-bar">
+            <input type="text" placeholder="Cari nomor surat..." onkeyup="searchArsip(this.value)" />
+            <select onchange="filterArsip(this.value)" style="width: 200px;">
+              <option value="all">Semua Status</option>
+              <option value="pending">Pending</option>
+              <option value="revisi">Revisi</option>
+              <option value="disetujui">Disetujui</option>
+            </select>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nomor Surat</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="arsipList">
+                <!-- JS akan inject kesini -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: ARSIP FINAL -->
+      <section id="arsipFinal" class="section hidden">
+        <div class="section-title">
+          <h2>Arsip Surat Keluar</h2>
+        </div>
+        <div class="card">
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nomor Surat</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="arsipFinalList">
+                <!-- JS akan inject kesini -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/user.js?v=3"></script>
+  <script>
+    // Tab switching logic for frontend
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      
+      document.querySelectorAll('.menu-item').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+
+    function logout() {
+      localStorage.removeItem("activeUser");
+      location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
