@@ -34,9 +34,14 @@
     <main class="main-content">
       <!-- TOPBAR -->
       <header class="topbar">
-        <div class="user-info">
-          <h3 id="welcomeText">Selamat Datang</h3>
-          <p><span id="namaUser"></span> • <span id="roleUser"></span> • <span id="sekolahUser"></span></p>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <button class="btn-menu-toggle" onclick="toggleSidebar()">
+            <i class="ri-menu-line"></i>
+          </button>
+          <div class="user-info">
+            <h3 id="welcomeText">Selamat Datang</h3>
+            <p><span id="namaUser"></span> • <span id="roleUser"></span> • <span id="sekolahUser"></span></p>
+          </div>
         </div>
         <button class="btn-logout" onclick="logout()">
           <i class="ri-logout-box-line"></i> Logout
@@ -175,6 +180,14 @@
       
       document.querySelectorAll('.menu-item').forEach(btn => btn.classList.remove('active'));
       event.currentTarget.classList.add('active');
+
+      if (window.innerWidth <= 768) {
+        document.querySelector('.sidebar').classList.remove('open');
+      }
+    }
+
+    function toggleSidebar() {
+      document.querySelector('.sidebar').classList.toggle('open');
     }
 
     function logout() {

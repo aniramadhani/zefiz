@@ -452,11 +452,31 @@ tr:hover td {
   text-decoration: underline;
 }
 
+/* =========================
+   MOBILE TOGGLE BUTTON
+========================= */
+.btn-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 4px;
+}
+.btn-menu-toggle:hover {
+  color: var(--primary);
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .btn-menu-toggle {
+    display: block;
+  }
   .sidebar {
     transform: translateX(-100%);
     transition: var(--transition);
+    z-index: 1000;
   }
   .sidebar.open {
     transform: translateX(0);
