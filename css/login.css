@@ -1,4 +1,4 @@
-/* RESET */
+/* reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* BODY CENTER FIX */
+/* center body */
 body {
   background: #f1f5f9;
   min-height: 100vh;
@@ -17,7 +17,7 @@ body {
   align-items: center;
 }
 
-/* CONTAINER (KOTAK TENGAH) */
+/* kotak tengah */
 .container {
   width: 100%;
   max-width: 400px;
@@ -32,13 +32,13 @@ body {
   animation: fadeIn 0.5s ease;
 }
 
-/* TITLE */
+/* title */
 .container h2 {
   margin-bottom: 20px;
   font-weight: 600;
 }
 
-/* INPUT, SELECT, BUTTON */
+
 input,
 select,
 button {
@@ -52,14 +52,14 @@ button {
   margin-top: 10px;
 }
 
-/* FOCUS EFFECT */
+
 input:focus,
 select:focus {
   border-color: #117df7;
   box-shadow: 0 0 0 4px rgba(17, 125, 247, 0.15);
 }
 
-/* BUTTON */
+
 button {
   margin-top: 15px;
   background: linear-gradient(135deg, #011f55, #117df7);
@@ -74,7 +74,7 @@ button:hover {
   opacity: 0.95;
 }
 
-/* BUTTON BACK */
+
 .back-btn {
   background: #6b7280;
 }
@@ -83,7 +83,7 @@ button:hover {
   background: #4b5563;
 }
 
-/* LINK */
+
 .container a {
   display: inline-block;
   margin-top: 12px;
@@ -96,7 +96,7 @@ button:hover {
   text-decoration: underline;
 }
 
-/* ANIMASI */
+/* animasi */
 @keyframes fadeIn {
   from {
     opacity: 0;

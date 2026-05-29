@@ -1,9 +1,7 @@
 let u = (function(){ try { return JSON.parse(localStorage.getItem("activeUser")); } catch(e) { return null; } })();
 if (!u || u.role !== "kepsek") location = "login.html";
 
-/* =========================
-   HEADER
-========================= */
+// header
 function loadHeader() {
   if (!u) return;
 
@@ -20,9 +18,7 @@ function loadHeader() {
   if (sekolah) sekolah.innerText = u.sekolah || "-";
 }
 
-/* =========================
-   LOAD PERSETUJUAN
-========================= */
+// load persetujuan
 function load() {
   let d = (function(){ try { return JSON.parse(localStorage.getItem("arsip")); } catch(e) { return null; } })() || [];
   const list = document.getElementById("dataKepsek");
@@ -80,9 +76,7 @@ function no(i) {
   }
 }
 
-/* =========================
-   ARSIP
-========================= */
+// arsip
 function loadArsip() {
   let d = (function(){ try { return JSON.parse(localStorage.getItem("arsip")); } catch(e) { return null; } })() || [];
   const list = document.getElementById("arsipList");
@@ -107,9 +101,7 @@ function loadArsip() {
   });
 }
 
-/* =========================
-   LIHAT SURAT (GLOBAL)
-========================= */
+// lihat surat (global)
 window.lihatSurat = function(nomor) {
   let data = (function(){ try { return JSON.parse(localStorage.getItem("arsip")); } catch(e) { return null; } })() || [];
   let surat = data.find(s => s.nomor === nomor);
@@ -137,3 +129,4 @@ document.addEventListener("DOMContentLoaded", () => {
   load();
   loadArsip();
 });
+

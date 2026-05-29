@@ -14,7 +14,6 @@ function login() {
     localStorage.setItem("users", JSON.stringify(data));
   }
 
-  // ✅ PERBAIKAN DI SINI
   let found = data.find((u) => u.email === email && u.pass === pass);
 
   if (found) {

@@ -2,9 +2,7 @@ let u = (function(){ try { return JSON.parse(localStorage.getItem("activeUser"))
 if (!u || u.role !== "admin") {
   location.href = "login.html";
 }
-/* =========================
-   HEADER
-========================= */
+// header
 function loadHeader() {
   if (!u) return;
 
@@ -24,9 +22,7 @@ function loadHeader() {
   if (sekolah) sekolah.innerText = u.sekolah || "-";
 }
 
-/* =========================
-   AMBIL NOMOR SURAT (ADMIN)
-========================= */
+// ambil nomor surat (admin)
 function loadKodeSurat() {
   const select = document.getElementById("inputKodeSurat");
   if (!select) return;
@@ -145,9 +141,7 @@ function simpanSurat() {
   });
 }
 
-/* =========================
-   VERIFIKASI SURAT
-========================= */
+// verifikasi surat
 function loadAdmin() {
   const data = (function(){ try { return JSON.parse(localStorage.getItem("arsip")); } catch(e) { return null; } })() || [];
   const list = document.getElementById("dataSurat");
@@ -200,9 +194,7 @@ function kirim(i) {
   loadArsip();
 }
 
-/* =========================
-   REKAP
-========================= */
+// rekap
 function loadRekap() {
   const data = (function(){ try { return JSON.parse(localStorage.getItem("arsip")); } catch(e) { return null; } })() || [];
   const list = document.getElementById("rekapList");
@@ -231,9 +223,7 @@ function loadRekap() {
   });
 }
 
-/* =========================
-   ARSIP
-========================= */
+// arsip
 function loadArsip() {
   const data = (function(){ try { return JSON.parse(localStorage.getItem("arsip")); } catch(e) { return null; } })() || [];
   const list = document.getElementById("arsipList");
@@ -258,9 +248,7 @@ function loadArsip() {
   });
 }
 
-/* =========================
-   TOTAL USER
-========================= */
+// total user
 function loadUserCount() {
   const users = (function(){ try { return JSON.parse(localStorage.getItem("users")); } catch(e) { return null; } })() || [];
   const el = document.getElementById("totalUser");
@@ -283,9 +271,7 @@ function loadUserCount() {
   }
 }
 
-/* =========================
-   LIHAT SURAT (GLOBAL)
-========================= */
+// lihat surat (global)
 window.lihatSurat = function(nomor) {
   let data = (function(){ try { return JSON.parse(localStorage.getItem("arsip")); } catch(e) { return null; } })() || [];
   let surat = data.find(s => s.nomor === nomor);
@@ -308,9 +294,7 @@ window.lihatSurat = function(nomor) {
   }
 }
 
-/* =========================
-   INIT
-========================= */
+// init
 document.addEventListener("DOMContentLoaded", () => {
   loadHeader();
   loadKodeSurat();
@@ -320,3 +304,4 @@ document.addEventListener("DOMContentLoaded", () => {
   loadUserCount();
   generateNomor(); // Auto generate on load
 });
+

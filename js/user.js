@@ -1,9 +1,7 @@
 let u = (function () { try { return JSON.parse(localStorage.getItem("activeUser")); } catch (e) { return null; } })();
 if (!u) location = "login.html";
 
-/* =========================
-   HEADER USER
-========================= */
+// header user
 function loadHeader() {
   if (!u) return;
 
@@ -23,9 +21,7 @@ function loadHeader() {
   if (sekolah) sekolah.innerText = u.sekolah || "-";
 }
 
-/* =========================
-   LOAD KODE SURAT
-========================= */
+// load kode surat
 function loadKodeSurat() {
   const select = document.getElementById("kodeSurat");
   if (!select) return;
@@ -49,9 +45,7 @@ function loadKodeSurat() {
   });
 }
 
-/* =========================
-   GENERATE NOMOR SURAT
-========================= */
+// generate nomor surat
 function getRomanMonth(monthIndex) {
   const roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
   return roman[monthIndex - 1];
@@ -90,9 +84,7 @@ function generateNomor() {
   }
 }
 
-/* =========================
-   SIMPAN SURAT
-========================= */
+// simpan surat
 function simpanSurat() {
   const hasilEl = document.getElementById("hasil");
   const nomor = hasilEl ? (hasilEl.tagName.toLowerCase() === 'input' ? hasilEl.value : hasilEl.innerText) : "-";
@@ -146,9 +138,7 @@ function simpanSurat() {
   });
 }
 
-/* =========================
-   RESET & DRAFT
-========================= */
+// reset & draft
 window.resetForm = function () {
   if (document.getElementById("kodeSurat")) document.getElementById("kodeSurat").selectedIndex = 0;
   if (document.getElementById("tanggal")) document.getElementById("tanggal").value = "";
@@ -205,9 +195,7 @@ window.simpanDraft = function () {
   });
 };
 
-/* =========================
-   LOAD ARSIP (FILTER USER)
-========================= */
+// load arsip (filter user)
 function loadArsip() {
   const list = document.getElementById("arsipList");
   const listFinal = document.getElementById("arsipFinalList");
@@ -264,9 +252,7 @@ function loadArsip() {
   if (document.getElementById("statDisetujui")) document.getElementById("statDisetujui").innerText = totalDisetujui;
 }
 
-/* =========================
-   SEARCH ARSIP
-========================= */
+// search arsip
 function searchArsip(keyword) {
   const list = document.getElementById("arsipList");
   if (!list) return;
@@ -300,9 +286,7 @@ function searchArsip(keyword) {
     });
 }
 
-/* =========================
-   FILTER ARSIP
-========================= */
+// filter arsip
 function filterArsip(status) {
   const list = document.getElementById("arsipList");
   if (!list) return;
@@ -336,9 +320,7 @@ function filterArsip(status) {
     });
 }
 
-/* =========================
-   LIHAT SURAT (GLOBAL)
-========================= */
+// lihat surat (global)
 window.lihatSurat = function (nomor) {
   let data = (function () { try { return JSON.parse(localStorage.getItem("arsip")); } catch (e) { return null; } })() || [];
   let surat = data.find(s => s.nomor === nomor);
@@ -365,9 +347,7 @@ window.lihatSurat = function (nomor) {
   }
 }
 
-/* =========================
-   EDIT SURAT (REVISI / DRAFT)
-========================= */
+// edit surat (revisi / draft)
 window.editSurat = function (nomor) {
   let data = (function () { try { return JSON.parse(localStorage.getItem("arsip")); } catch (e) { return null; } })() || [];
   let index = data.findIndex(s => s.nomor === nomor);
@@ -407,12 +387,11 @@ window.editSurat = function (nomor) {
   }
 }
 
-/* =========================
-   INIT
-========================= */
+// init
 document.addEventListener("DOMContentLoaded", () => {
   loadHeader();
   loadKodeSurat();
   loadArsip();
   generateNomor(); // Auto generate on load
 });
+

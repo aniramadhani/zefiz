@@ -34,9 +34,7 @@ body {
   overflow-x: hidden;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
+/* typography */
 h1, h2, h3, h4 {
   color: var(--text-main);
   font-weight: 600;
@@ -48,9 +46,7 @@ p {
   line-height: 1.5;
 }
 
-/* =========================
-   LAYOUT: SIDEBAR & MAIN
-========================= */
+/* layout */
 .app-container {
   display: flex;
   width: 100%;
@@ -129,9 +125,7 @@ p {
   gap: 24px;
 }
 
-/* =========================
-   TOPBAR
-========================= */
+/* topbar */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -170,9 +164,7 @@ p {
   color: white;
 }
 
-/* =========================
-   CARDS & CONTAINERS
-========================= */
+/* cards */
 .card {
   background: var(--surface);
   border-radius: var(--radius-lg);
@@ -223,9 +215,7 @@ p {
   border-radius: 50%;
 }
 
-/* =========================
-   FORMS & INPUTS
-========================= */
+/* forms */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -259,9 +249,7 @@ textarea {
   min-height: 100px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* buttons */
 .btn-primary {
   background: var(--primary-gradient);
   color: white;
@@ -305,9 +293,7 @@ textarea {
   margin-top: 24px;
 }
 
-/* =========================
-   TABLES
-========================= */
+/* tables */
 .table-container {
   overflow-x: auto;
   border-radius: var(--radius-md);
@@ -341,9 +327,7 @@ tr:hover td {
   background: #f8fafc;
 }
 
-/* =========================
-   BADGES & STATUS
-========================= */
+/* badges */
 .badge {
   padding: 4px 10px;
   border-radius: 20px;
@@ -356,9 +340,7 @@ tr:hover td {
 .badge.disetujui { background: #d1fae5; color: #059669; }
 .badge.revisi { background: #fee2e2; color: #dc2626; }
 
-/* =========================
-   TOAST
-========================= */
+/* toast */
 #toast {
   position: fixed;
   bottom: 24px;
@@ -378,9 +360,7 @@ tr:hover td {
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* =========================
-   UTILITIES
-========================= */
+/* utils */
 .hidden {
   display: none !important;
 }
@@ -401,17 +381,16 @@ tr:hover td {
   flex: 1;
 }
 
-/* =========================
-   AUTH PAGES (LOGIN/REG)
-========================= */
+/* auth */
 .auth-container {
   min-height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--primary-gradient);
-  padding: 20px;
+  padding: 40px 20px;
 }
 .auth-card {
   background: var(--surface);
@@ -452,9 +431,7 @@ tr:hover td {
   text-decoration: underline;
 }
 
-/* =========================
-   MOBILE TOGGLE BUTTON
-========================= */
+/* mobile */
 .btn-menu-toggle {
   display: none;
   background: none;
